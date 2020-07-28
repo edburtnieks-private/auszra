@@ -3,8 +3,17 @@
     <header
       class="container mx-auto px-4 py-10 pb-20 flex flex-col items-center"
     >
-      <div class="flex justify-between w-full">
-        <n-link :to="{ name: 'coming-soon' }">Auszra</n-link>
+      <div class="flex justify-between items-center w-full">
+        <n-link :to="{ name: 'coming-soon' }">
+          <img src="~/assets/images/logo.svg" alt="auszra logo" />
+
+          <span
+            class="text-gray-700 uppercase text-sm font-bold tracking-wider"
+          >
+            Auszra
+          </span>
+        </n-link>
+
         <a
           class="text-gray-700"
           href="https://github.com/edburtnieks/auszra"
