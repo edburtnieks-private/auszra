@@ -56,7 +56,7 @@
           method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
-          @submit.prevent
+          @submit.prevent="handleSubmit"
         >
           <p class="hidden">
             <label>Don’t fill this field: <input name="bot-field" /></label>
@@ -72,6 +72,7 @@
           <div class="flex">
             <input
               id="email"
+              v-model="email"
               type="email"
               name="email"
               class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -182,8 +183,38 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 export default {
+  data() {
+    return {
+      email: '',
+    }
+  },
+  methods: {
+    encode(data) {
+      return Object.keys(data)
+        .map(
+          (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+        )
+        .join('&')
+    },
+    async handleSubmit(event) {
+      if (this.email !== '') {
+        try {
+          await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: this.encode({
+              'form-name': event.target.getAttribute('name'),
+              email: this.email,
+            }),
+          })
+        } catch (error) {
+          console.error('Error while submitting the form: ', error)
+        }
+      }
+    },
+  },
   head() {
     return {
       title: 'Auszra - Coming Soon',
