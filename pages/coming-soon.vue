@@ -50,7 +50,18 @@
           Get updates and know when we launch!
         </h2>
 
-        <form class="pt-5" @submit.prevent>
+        <form
+          class="pt-5"
+          name="newsletter"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          @submit.prevent
+        >
+          <p class="hidden">
+            <label>Don’t fill this field: <input name="bot-field" /></label>
+          </p>
+
           <label
             class="block text-gray-700 font-bold tracking-wide pb-2"
             for="email"
