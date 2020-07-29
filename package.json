@@ -17,8 +17,8 @@
     "test:e2e": "cross-env TEST=e2e ava ./test/e2e/**/*"
   },
   "lint-staged": {
-    "*.{js,vue}": "eslint",
-    "*.{css,vue}": "stylelint"
+    "!(node_modules|dist)/**/*.{js,vue}": "eslint",
+    "!(node_modules|dist)/**/*.{css,vue}": "stylelint"
   },
   "husky": {
     "hooks": {
