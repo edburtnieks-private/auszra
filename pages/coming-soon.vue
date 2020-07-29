@@ -64,11 +64,13 @@
           name="newsletter"
           method="POST"
           data-netlify="true"
-          netlify-honeypot="bot-field"
           @submit.prevent="handleSubmit"
         >
           <p class="hidden">
-            <label>Don’t fill this field: <input name="bot-field" /></label>
+            <label>
+              Don’t fill this field:
+              <input name="bot-field" :value="botField" readonly />
+            </label>
           </p>
 
           <label
@@ -223,6 +225,7 @@ export default {
     return {
       formData: {
         email: '',
+        botField: '',
       },
       isLoading: false,
       isDone: false,
@@ -299,7 +302,7 @@ export default {
         if (!isInputValid) errors[key] = message
       }
 
-      if (Object.keys(errors).length > 0) isValid = false
+      if (Object.keys(errors).length > 0 || this.bodField) isValid = false
 
       return {
         errors,
