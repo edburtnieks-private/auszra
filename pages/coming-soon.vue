@@ -93,8 +93,8 @@
               :class="{
                 'bg-primary hover:bg-primary-light focus:bg-primary-light':
                   !isDone && !isError,
-                'bg-red-600': isError,
-                'bg-green-600': isDone,
+                'bg-red-600 cursor-not-allowed': isError,
+                'bg-green-600 cursor-not-allowed': isDone,
               }"
               type="submit"
               :disabled="isDone || isLoading"
@@ -250,6 +250,7 @@ export default {
           if (data.success) {
             this.isLoading = false
             this.isDone = true
+            this.formData.email = ''
           } else {
             throw new Error('Something went wrong')
           }
@@ -257,6 +258,7 @@ export default {
           this.isError = true
           this.isLoading = false
           this.isDone = false
+          this.formData.email = ''
           this.error = error.message
 
           console.error('Error while submitting the form: ', error)
