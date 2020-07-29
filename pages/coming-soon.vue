@@ -59,7 +59,12 @@
           Get updates and know when we launch!
         </h2>
 
-        <form class="pt-5" @submit.prevent="handleSubmit">
+        <form
+          class="pt-5"
+          action="https://getform.io/f/06c5eed5-01b9-4c55-ad66-646993ff0947"
+          method="POST"
+          @submit.prevent="handleSubmit"
+        >
           <label
             class="block text-gray-700 font-bold tracking-wide pb-2"
             for="email"
@@ -222,13 +227,6 @@ export default {
     }
   },
   methods: {
-    encode(data) {
-      return Object.keys(data)
-        .map(
-          (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
-        )
-        .join('&')
-    },
     async handleSubmit(event) {
       const { errors, isValid } = this.validateForm(this.formData)
 
@@ -238,22 +236,28 @@ export default {
         this.loading = true
 
         try {
-          await fetch('/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: this.encode({
-              'form-name': event.target.getAttribute('name'),
-              ...this.formData,
-            }),
-          })
+          const response = await fetch(
+            'https://getform.io/f/06c5eed5-01b9-4c55-ad66-646993ff0947',
+            {
+              method: 'POST',
+              headers: { Accept: 'application/json' },
+              dataType: 'json',
+              body: new FormData(event.target),
+            }
+          )
+          const data = await response.json()
 
-          this.isLoading = false
-          this.isDone = true
+          if (data.success) {
+            this.isLoading = false
+            this.isDone = true
+          } else {
+            throw new Error('Something went wrong')
+          }
         } catch (error) {
           this.isError = true
           this.isLoading = false
           this.isDone = false
-          this.error = 'Something went wrong'
+          this.error = error.message
 
           console.error('Error while submitting the form: ', error)
         }
