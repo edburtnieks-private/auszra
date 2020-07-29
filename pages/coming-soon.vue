@@ -54,10 +54,12 @@
         </a>
       </h1>
 
-      <div class="pt-12 lg:pt-20">
+      <div class="pt-12 lg:pt-20 max-w-lg">
         <h2 class="text-xl lg:text-3xl font-bold tracking-wide">
-          Get updates and know when we launch!
+          Get updates and notification when we launch
         </h2>
+
+        <p class="text-gray-700">We promise to never spam you.</p>
 
         <form
           class="pt-5"
@@ -72,7 +74,7 @@
             Email
           </label>
 
-          <div class="sm:flex">
+          <div class="sm:flex pb-5">
             <input
               id="email"
               v-model="formData.email"
@@ -103,14 +105,14 @@
             >
               <span v-if="isError">Error</span>
               <span v-else-if="isDone">Thank you!</span>
-              <span v-else-if="isLoading">Joining</span>
-              <span v-else>Join</span>
+              <span v-else-if="isLoading">Hang on...</span>
+              <span v-else>Notify me</span>
             </button>
           </div>
 
           <small
             v-if="errors.email"
-            class="block mt-2 text-red-600"
+            class="block -mt-4 text-red-600 leading-4"
             v-text="errors.email"
           />
 
