@@ -78,11 +78,13 @@
               v-model="formData.email"
               type="email"
               name="email"
-              class="shadow appearance-none border rounded w-full py-2 px-3 sm:mr-4 mb-4 sm:mb-0 text-gray-700 leading-tight"
+              class="bg-white shadow appearance-none border rounded w-full py-2 px-3 sm:mr-4 mb-4 sm:mb-0 text-gray-700 leading-tight"
               :class="{
-                'border-red-600': errors.email,
-                'border-green-600': valid.email,
+                'border-red-600': errors.email || isError,
+                'border-green-600': valid.email && !isError,
+                'cursor-not-allowed': isDone,
               }"
+              :disabled="isDone"
               @input="onChange"
               @blur="onChange"
               @invalid.prevent
@@ -250,7 +252,6 @@ export default {
           if (data.success) {
             this.isLoading = false
             this.isDone = true
-            this.formData.email = ''
           } else {
             throw new Error('Something went wrong')
           }
@@ -266,19 +267,27 @@ export default {
       }
     },
     onChange(event) {
-      const { name: field, value, validity } = event.target
+      if (!this.isDone) {
+        const { name: field, value, validity } = event.target
 
-      const { message, isValid } = this.validateInput(
-        field,
-        value,
-        validity.valid
-      )
+        const { message, isValid } = this.validateInput(
+          field,
+          value,
+          validity.valid
+        )
 
-      if (!isValid) {
-        this.$set(this.errors, field, message)
+        if (!isValid) {
+          this.$set(this.errors, field, message)
+        }
+
+        if (isValid) {
+          this.$delete(this.errors, field)
+        }
       }
-      if (isValid) {
-        this.$delete(this.errors, field)
+
+      if (this.isError) {
+        this.isError = false
+        this.error = ''
       }
     },
     validateForm(data) {
