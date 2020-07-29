@@ -8,7 +8,7 @@
           <img src="~/assets/images/logo.svg" alt="auszra logo" />
 
           <span
-            class="text-gray-700 uppercase text-sm font-bold tracking-wider"
+            class="text-gray-700 uppercase text-sm font-bold tracking-wider block -mt-3"
           >
             Auszra
           </span>
