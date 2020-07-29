@@ -233,7 +233,7 @@ export default {
       if (!isValid) {
         this.errors = errors
       } else {
-        this.loading = true
+        this.isLoading = true
 
         try {
           const response = await fetch(
