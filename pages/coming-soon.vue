@@ -1,7 +1,7 @@
 <template>
   <div>
     <header
-      class="container mx-auto px-4 py-10 pb-20 flex flex-col items-center"
+      class="container mx-auto px-6 pb-10 lg:pb-20 pt-5 lg:pt-10 flex flex-col items-center"
     >
       <div class="flex justify-between items-center w-full">
         <n-link :to="{ name: 'coming-soon' }">
@@ -38,11 +38,11 @@
         </a>
       </div>
 
-      <p class="text-xl text-center pt-20 font-light tracking-wider">
+      <p class="text-xl text-center pt-5 lg:pt-20 font-light tracking-wider">
         Coming Soon!
       </p>
 
-      <h1 class="text-5xl text-center pt-5 tracking-wide">
+      <h1 class="text-3xl lg:text-5xl text-center pt-5 tracking-wide">
         Completely free and open source online language platform inspired by
         <a
           href="https://www.nathanieldrew.com"
@@ -54,8 +54,8 @@
         </a>
       </h1>
 
-      <div class="pt-20">
-        <h2 class="text-3xl font-bold tracking-wide">
+      <div class="pt-12 lg:pt-20">
+        <h2 class="text-xl lg:text-3xl font-bold tracking-wide">
           Get updates and know when we launch!
         </h2>
 
@@ -78,30 +78,55 @@
             Email
           </label>
 
-          <div class="flex">
+          <div class="sm:flex">
             <input
               id="email"
-              v-model="email"
+              v-model="formData.email"
               type="email"
               name="email"
-              class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              class="shadow appearance-none border rounded w-full py-2 px-3 sm:mr-4 mb-4 sm:mb-0 text-gray-700 leading-tight"
+              :class="{
+                'border-red-600': errors.email,
+                'border-green-600': valid.email,
+              }"
+              @input="onChange"
+              @blur="onChange"
+              @invalid.prevent
             />
 
             <button
-              class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-8 rounded leading-none"
+              class="text-white font-bold py-2 px-10 w-full sm:w-auto h-10 sm:h-auto rounded leading-none whitespace-no-wrap"
+              :class="{
+                'bg-primary hover:bg-primary-light focus:bg-primary-light':
+                  !isDone && !isError,
+                'bg-red-600': isError,
+                'bg-green-600': isDone,
+              }"
               type="submit"
+              :disabled="isDone || isLoading"
             >
-              Join
+              <span v-if="isError">Error</span>
+              <span v-else-if="isDone">Thank you!</span>
+              <span v-else-if="isLoading">Joining</span>
+              <span v-else>Join</span>
             </button>
           </div>
+
+          <small
+            v-if="errors.email"
+            class="block mt-2 text-red-600"
+            v-text="errors.email"
+          />
+
+          <small v-if="error" class="block mt-2 text-red-600" v-text="error" />
         </form>
       </div>
     </header>
 
-    <main class="container mx-auto px-4">
-      <section class="py-20">
-        <h2 class="text-3xl pb-8 font-bold tracking-wide">
-          How is it different?
+    <main class="container mx-auto px-6">
+      <section class="py-5 lg:py-10">
+        <h2 class="text-2xl lg:text-3xl pb-5 font-bold tracking-wide">
+          How is it Different?
         </h2>
 
         <p class="text-xl tracking-wider max-w-4xl pb-5">
@@ -127,8 +152,8 @@
         </p>
       </section>
 
-      <section class="py-10">
-        <h2 class="text-3xl pb-5 font-bold tracking-wide">
+      <section class="py-5 lg:py-10">
+        <h2 class="text-2xl lg:text-3xl pb-5 font-bold tracking-wide">
           Who is this for?
         </h2>
 
@@ -142,8 +167,8 @@
         </p>
       </section>
 
-      <section class="py-10">
-        <h2 class="text-3xl pb-5 font-bold tracking-wide">
+      <section class="py-5 lg:py-10">
+        <h2 class="text-2xl lg:text-3xl pb-5 font-bold tracking-wide">
           Get Involved
         </h2>
 
@@ -154,14 +179,14 @@
         </p>
 
         <p class="text-xl tracking-wider max-w-4xl">
-          But you don't have to have technical skills to contribute. All of the
+          You don't have to have technical skills to contribute. All of the
           translations will be done by us and the community so feel free to
           contribute using your language knowledge.
         </p>
       </section>
 
-      <section class="py-10">
-        <h2 class="text-3xl pb-5 font-bold tracking-wide">
+      <section class="py-5 lg:py-10">
+        <h2 class="text-2xl lg:text-3xl pb-5 font-bold tracking-wide">
           Inspiration
         </h2>
 
@@ -186,7 +211,7 @@
       </section>
     </main>
 
-    <footer class="container mx-auto py-8 text-right">
+    <footer class="container mx-auto px-6 py-8 text-right">
       &copy; Copyright 2020, Auszra
     </footer>
   </div>
@@ -196,7 +221,15 @@
 export default {
   data() {
     return {
-      email: '',
+      formData: {
+        email: '',
+      },
+      isLoading: false,
+      isDone: false,
+      isError: false,
+      errors: {},
+      error: '',
+      valid: {},
     }
   },
   methods: {
@@ -208,19 +241,94 @@ export default {
         .join('&')
     },
     async handleSubmit(event) {
-      if (this.email !== '') {
+      const { errors, isValid } = this.validateForm(this.formData)
+
+      if (!isValid) {
+        this.errors = errors
+      } else {
+        this.loading = true
+
         try {
           await fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: this.encode({
               'form-name': event.target.getAttribute('name'),
-              email: this.email,
+              ...this.formData,
             }),
           })
+
+          this.isLoading = false
+          this.isDone = true
         } catch (error) {
+          this.isError = true
+          this.isLoading = false
+          this.isDone = false
+          this.error = 'Something went wrong'
+
           console.error('Error while submitting the form: ', error)
         }
+      }
+    },
+    onChange(event) {
+      const { name: field, value, validity } = event.target
+
+      const { message, isValid } = this.validateInput(
+        field,
+        value,
+        validity.valid
+      )
+
+      if (!isValid) {
+        this.$set(this.errors, field, message)
+      }
+      if (isValid) {
+        this.$delete(this.errors, field)
+      }
+    },
+    validateForm(data) {
+      const errors = {}
+      let isValid = true
+
+      for (const [key, value] of Object.entries(data)) {
+        const { message, isValid: isInputValid } = this.validateInput(
+          key,
+          value
+        )
+
+        if (!isInputValid) errors[key] = message
+      }
+
+      if (Object.keys(errors).length > 0) isValid = false
+
+      return {
+        errors,
+        isValid,
+      }
+    },
+    validateInput(field, value, valid = true) {
+      let message = ''
+      let isValid = true
+
+      if (value === '') {
+        message = `Please enter your ${field}`
+        isValid = false
+
+        if (this.valid[field]) this.valid[field] = false
+      }
+
+      if (field === 'email' && !valid && value !== '') {
+        message = 'Please enter a valid email'
+        isValid = false
+
+        if (this.valid[field]) this.valid[field] = false
+      }
+
+      if (isValid) this.valid[field] = true
+
+      return {
+        message,
+        isValid,
       }
     },
   },

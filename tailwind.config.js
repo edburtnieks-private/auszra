@@ -6,6 +6,12 @@
  */
 module.exports = {
   theme: {
+    extend: {
+      colors: {
+        primary: '#f0954f',
+        'primary-light': '#f7caa7',
+      },
+    },
     fontFamily: {
       body: 'Poppins, sans-serif',
     },
