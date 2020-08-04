@@ -38,21 +38,18 @@
         </a>
       </div>
 
-      <p class="text-xl text-center pt-5 lg:pt-20 font-light tracking-wider">
+      <p class="text-xl pt-5 lg:pt-20 font-light tracking-wider">
         Coming Soon!
       </p>
 
-      <h1 class="text-3xl lg:text-5xl text-center pt-5 tracking-wide">
-        Completely free and open source online language platform inspired by
-        <a
-          href="https://www.nathanieldrew.com"
-          target="_blank"
-          rel="noreferrer noopener"
-          class="underline"
-        >
-          Nathaniel Drew
-        </a>
+      <h1 class="text-3xl lg:text-5xl pt-5 tracking-wide">
+        Free and open source online language platform
       </h1>
+
+      <p class="pt-2 tracking-wide">
+        Start communicating and putting thoughts together in a new language as
+        quickly as possible
+      </p>
 
       <div class="pt-12 lg:pt-20 max-w-lg">
         <h2 class="text-xl lg:text-3xl font-bold tracking-wide">
