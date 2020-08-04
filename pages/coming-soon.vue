@@ -42,7 +42,7 @@
         Coming Soon!
       </p>
 
-      <h1 class="text-3xl lg:text-5xl pt-5 tracking-wide">
+      <h1 class="text-3xl lg:text-5xl pt-5 tracking-wide leading-tight">
         Free and open source online language platform
       </h1>
 
@@ -52,7 +52,7 @@
       </p>
 
       <div class="pt-12 lg:pt-20 max-w-lg">
-        <h2 class="text-xl lg:text-3xl font-bold tracking-wide">
+        <h2 class="text-xl lg:text-3xl font-bold tracking-wide leading-tight">
           Get updates and notification when we launch
         </h2>
 
