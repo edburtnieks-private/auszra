@@ -58,12 +58,9 @@
 
         <p class="text-gray-700">We promise to never spam you.</p>
 
-        <form
-          class="pt-5"
-          action="https://getform.io/f/06c5eed5-01b9-4c55-ad66-646993ff0947"
-          method="POST"
-          @submit.prevent="handleSubmit"
-        >
+        <form class="pt-5" @submit.prevent="handleSubmit">
+          <input type="hidden" value="1" name="embed" class="hidden" />
+
           <label
             class="block text-gray-700 font-bold tracking-wide pb-2"
             for="email"
@@ -92,16 +89,13 @@
             <button
               class="text-white font-bold py-2 px-10 w-full sm:w-auto h-10 sm:h-auto rounded leading-none whitespace-no-wrap"
               :class="{
-                'bg-primary hover:bg-primary-light focus:bg-primary-light':
-                  !isDone && !isError,
-                'bg-red-600 cursor-not-allowed': isError,
+                'bg-primary hover:bg-primary-light focus:bg-primary-light': !isDone,
                 'bg-green-600 cursor-not-allowed': isDone,
               }"
               type="submit"
               :disabled="isDone || isLoading"
             >
-              <span v-if="isError">Error</span>
-              <span v-else-if="isDone">Thank you!</span>
+              <span v-if="isDone">Thank you!</span>
               <span v-else-if="isLoading">Hang on...</span>
               <span v-else>Notify me</span>
             </button>
@@ -113,7 +107,21 @@
             v-text="errors.email"
           />
 
-          <small v-if="error" class="block mt-2 text-red-600" v-text="error" />
+          <small
+            v-if="error"
+            class="block -mt-4 text-red-600 leading-4"
+            v-text="error"
+          />
+
+          <small>
+            <a
+              href="https://buttondown.email"
+              target="_blank"
+              class="underline text-blue-600"
+            >
+              Powered by Buttondown.
+            </a>
+          </small>
         </form>
       </div>
     </header>
@@ -192,16 +200,18 @@
             rel="noreferrer noopener"
             href="https://www.nathanieldrew.com"
             class="underline text-blue-600"
-            >Nathaniel Drew's</a
           >
+            Nathaniel Drew's
+          </a>
           challenge
           <a
             target="_blank"
             rel="noreferrer noopener"
             href="https://www.youtube.com/watch?v=lhcvejeAB0E"
             class="underline text-blue-600"
-            >I Learned Portuguese in 7 Days – Part 1 (My Method)</a
-          >.
+          >
+            I Learned Portuguese in 7 Days – Part 1 (My Method).
+          </a>
         </p>
       </section>
     </main>
@@ -228,7 +238,7 @@ export default {
     }
   },
   methods: {
-    async handleSubmit(event) {
+    async handleSubmit() {
       const { errors, isValid } = this.validateForm(this.formData)
 
       if (!isValid) {
@@ -238,21 +248,24 @@ export default {
 
         try {
           const response = await fetch(
-            'https://getform.io/f/06c5eed5-01b9-4c55-ad66-646993ff0947',
+            'https://api.buttondown.email/v1/subscribers',
             {
               method: 'POST',
-              headers: { Accept: 'application/json' },
-              dataType: 'json',
-              body: new FormData(event.target),
+              headers: {
+                Authorization: `Token ${process.env.BUTTONDOWN_API_KEY}`,
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ email: this.formData.email }),
             }
           )
-          const data = await response.json()
 
-          if (data.success) {
+          if (response.status === 400) {
+            throw new Error('Something went wrong')
+          }
+
+          if (response.status === 201) {
             this.isLoading = false
             this.isDone = true
-          } else {
-            throw new Error('Something went wrong')
           }
         } catch (error) {
           this.isError = true
