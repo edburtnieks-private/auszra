@@ -96,4 +96,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+  env: {
+    BUTTONDOWN_API_KEY: process.env.BUTTONDOWN_API_KEY,
+  },
 }
