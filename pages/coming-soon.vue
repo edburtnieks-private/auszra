@@ -1,7 +1,7 @@
 <template>
   <div>
     <header
-      class="container mx-auto px-6 pb-10 lg:pb-20 pt-5 lg:pt-10 flex flex-col items-center"
+      class="container mx-auto px-6 pb-10 lg:pb-20 pt-5 lg:pt-10 flex flex-col"
     >
       <div class="flex justify-between items-center w-full">
         <n-link :to="{ name: 'coming-soon' }">
@@ -38,20 +38,26 @@
         </a>
       </div>
 
-      <p class="text-xl pt-5 lg:pt-20 font-light tracking-wider">
+      <p class="text-xl pt-5 lg:pt-20 font-light tracking-wider self-center">
         Coming Soon!
       </p>
 
-      <h1 class="text-3xl lg:text-5xl pt-5 tracking-wide leading-tight">
-        Free and open source online language platform
-      </h1>
+      <div>
+        <h1
+          class="max-w-5xl text-3xl lg:text-4xl pt-5 tracking-wide leading-tight"
+        >
+          Start communicating and putting thoughts together in a new language as
+          quickly as possible
+        </h1>
+      </div>
 
-      <p class="pt-2 tracking-wide">
-        Start communicating and putting thoughts together in a new language as
-        quickly as possible
+      <p class="pt-5 tracking-wide max-w-lg">
+        Completely free and open-source online language learning platform made
+        to make the biggest impact possible while being smart with your time and
+        energy.
       </p>
 
-      <div class="pt-12 lg:pt-20 max-w-lg">
+      <div class="pt-12 lg:pt-20 max-w-lg self-center">
         <h2 class="text-xl lg:text-3xl font-bold tracking-wide leading-tight">
           Get updates and notification when we launch
         </h2>
@@ -129,45 +135,94 @@
     <main class="container mx-auto px-6">
       <section class="py-5 lg:py-10">
         <h2 class="text-2xl lg:text-3xl pb-5 font-bold tracking-wide">
-          How is it Different?
+          Features
         </h2>
 
-        <p class="text-xl tracking-wider max-w-4xl pb-5">
-          We strongly believe and agree that language learning should be a fun,
-          mind-expanding, and enriching experience, accessible completely free
-          to everyone.
-        </p>
+        <ul class="text-xl tracking-wider max-w-4xl list-disc pl-10">
+          <li class="mb-5 pl-5">
+            Learn in your native language
+          </li>
 
-        <p class="text-xl tracking-wider max-w-4xl pb-5">
-          There are a lot of tools, resources, and apps when it comes to online
-          language learning. Our approach is different. We will provide you with
-          all the necessary resources and tools for you to start learning the
-          basics and communicate with people as quickly as possible.
-        </p>
+          <li class="mb-5 pl-5">
+            Library of the most common words with pronunciation - core
+            conversational vocabulary, nouns, adjectives, verbs, pronouns and
+            more
+          </li>
 
-        <p class="text-xl tracking-wider max-w-4xl">
-          We want you to spend as little time as possible on our platform and
-          instead have the material accessible at any time. We will accompany
-          our language material with an application that will boost efficiency
-          and will help you save even more time. However, our goal is NOT to
-          make you spend time going through challenges and collect points and
-          day streaks.
-        </p>
+          <li class="mb-5 pl-5">
+            Basic grammar and connector words for creating full thoughts and
+            sentences
+          </li>
+
+          <li class="pl-5">
+            Language resources for consuming the language - music, movies,
+            podcasts, books, articles, content creators and more
+          </li>
+        </ul>
       </section>
 
       <section class="py-5 lg:py-10">
         <h2 class="text-2xl lg:text-3xl pb-5 font-bold tracking-wide">
-          Who is this for?
+          How does it work
         </h2>
 
-        <p class="text-xl tracking-wider max-w-4xl">
-          As our aim is for you to start communicating with people in new way as
-          quickly as possible and not to master the language, this will NOT be a
-          fully-fledged language course with grammar lessons and all the edge
-          cases. Instead, we will provide a solid starting point which will help
-          you take the next steps if you desire to get serious with the target
-          language in the future.
-        </p>
+        <ol class="text-xl tracking-wider max-w-4xl list-decimal pl-10">
+          <li class="mb-12 pl-5">
+            Find your mission
+
+            <ul class="mt-5 pl-5">
+              <li class="mb-5 pl-5 list-disc">
+                Find a clear motivation and write down as many reasons as
+                possible for starting to learn a language
+              </li>
+
+              <li class="pl-5 list-disc">
+                If any, write down a list of words that you already know
+              </li>
+            </ul>
+          </li>
+
+          <li class="mb-12 pl-5">
+            Gather the building blocks
+
+            <ul class="mt-5 pl-5">
+              <li class="mb-5 pl-5 list-disc">
+                Write down the top 1000 - 2000 words in the given language
+              </li>
+
+              <li class="mb-5 pl-5 list-disc">
+                Organize the list of words
+              </li>
+
+              <li class="pl-5 list-disc">
+                Listen to word pronunciation and speak words out loud
+              </li>
+            </ul>
+          </li>
+
+          <li class="mb-12 pl-5">
+            Glue words together
+
+            <ul class="mt-5 pl-5">
+              <li class="pl-5 list-disc">
+                Learn connector words - the most important conjugations, verbs
+                and tenses
+              </li>
+            </ul>
+          </li>
+
+          <li class="pl-5">
+            Consume the language
+
+            <ul class="mt-5 pl-5">
+              <li class="pl-5 list-disc">
+                Train your ears and identify as many words as possible by
+                listening to music, podcasts, watching movies, reading books,
+                articles, following content creators on social media
+              </li>
+            </ul>
+          </li>
+        </ol>
       </section>
 
       <section class="py-5 lg:py-10">
@@ -179,6 +234,14 @@
           This is a completely free and open-source project. That means if you
           have the design and technical knowledge, you can help shape our
           website and application.
+          <a
+            target="_blank"
+            rel="noreferrer noopener"
+            href="https://github.com/edburtnieks/auszra/issues"
+            class="underline text-blue-600"
+          >
+            See GitHub issues.
+          </a>
         </p>
 
         <p class="text-xl tracking-wider max-w-4xl">
