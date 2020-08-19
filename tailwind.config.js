@@ -1,3 +1,5 @@
+const theme = require('./theme')
+
 /*
  ** TailwindCSS Configuration File
  **
@@ -5,19 +7,20 @@
  ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
  */
 module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        primary: '#f0954f',
-        'primary-light': '#f7caa7',
-      },
-    },
-    fontFamily: {
-      body: 'Poppins, sans-serif',
-    },
-  },
+  theme,
   variants: {},
   plugins: [],
+  corePlugins: [
+    'backgroundColor',
+    'textColor',
+    'fontFamily',
+    'fontSize',
+    'fontWeight',
+    'letterSpacing',
+    'lineHeight',
+    'margin',
+    'padding',
+  ],
   purge: {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
     enabled: process.env.NODE_ENV === 'production',

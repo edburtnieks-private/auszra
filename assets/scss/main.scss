@@ -1,5 +1,10 @@
-body {
-  @apply font-body;
-  @apply bg-gray-100;
-  @apply text-gray-900;
-}
+/* Modern CSS reset */
+@import 'reset';
+
+/* Global CSS */
+@import 'global';
+
+/* Utilities */
+@import 'utilities/flow';
+@import 'utilities/wrapper';
+@import 'utilities/columns';
