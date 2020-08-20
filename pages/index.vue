@@ -29,20 +29,7 @@
       <section class="flow">
         <h2>Process overview</h2>
 
-        <ol>
-          <li>
-            Find your mission
-          </li>
-          <li>
-            Gather the building blocks
-          </li>
-          <li>
-            Glue words together
-          </li>
-          <li>
-            Consume the language
-          </li>
-        </ol>
+        <TheProcess />
       </section>
 
       <section class="flow">
