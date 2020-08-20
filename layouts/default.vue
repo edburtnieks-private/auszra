@@ -1,15 +1,6 @@
 <template>
-  <div class="[ main-layout ] [ flow ]">
+  <fragment>
     <nuxt />
-
-    <footer class="wrapper">
-      <small>&copy; Copyright 2020, Auszra</small>
-    </footer>
-  </div>
+    <ThePageFooter />
+  </fragment>
 </template>
-
-<style lang="scss" scoped>
-.main-layout {
-  --flow-space: 8rem;
-}
-</style>

@@ -1,4 +1,10 @@
 .columns {
+  @extend .flow--horizontal;
+
+  > * {
+    --flow-space: 5rem;
+  }
+
   display: flex;
   justify-content: space-between;
 }

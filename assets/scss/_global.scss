@@ -23,6 +23,24 @@ a {
   display: inline-block;
 }
 
+p,
+li {
+  @apply max-w-content-large;
+}
+
+ul,
+ol {
+  @extend .flow;
+
+  > li {
+    --flow-space: 1em;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
 main > * {
   --flow-space: 8rem;
 }

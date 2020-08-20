@@ -37,5 +37,10 @@ module.exports = {
     '10': '2.5rem', // 40px
     '12': '3rem', // 48px
     '32': '8rem', // 128px
+    '64': '16rem', // 256px
+  },
+  maxWidth: {
+    'content-medium': '50ch',
+    'content-large': '65ch',
   },
 }

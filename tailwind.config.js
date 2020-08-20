@@ -20,6 +20,7 @@ module.exports = {
     'lineHeight',
     'margin',
     'padding',
+    'maxWidth',
   ],
   purge: {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css

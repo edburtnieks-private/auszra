@@ -9,7 +9,7 @@
 
 <style lang="scss" scoped>
 .main-navigation {
-  @apply text-base py-10;
+  @apply text-base py-10 mb-8;
 
   --flow-space: 3rem;
 

@@ -1,9 +1,6 @@
 <template>
   <fragment>
-    <header class="wrapper">
-      <TheMainNavigation />
-      <TheHero />
-    </header>
+    <TheHeader />
 
     <main class="flow wrapper">
       <section class="flow">
@@ -52,37 +49,29 @@
         <h2>Get involved</h2>
 
         <div class="columns">
-          <div class="flow">
-            <p>
-              This is a completely free and open-source project. Full source
-              code is publicly available. If you have the design or technical
-              knowledge, you can help shape our website and application.
-            </p>
+          <TheGetInvolvedColumn
+            link="https://github.com/edburtnieks/auszra/issues"
+          >
+            This is a completely free and open-source project. Full source code
+            is publicly available. If you have the design or technical
+            knowledge, you can help shape our website and application.
 
-            <a
-              href="https://github.com/edburtnieks/auszra/issues"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
+            <template v-slot:link>
               See all issues on GitHub
-            </a>
-          </div>
+            </template>
+          </TheGetInvolvedColumn>
 
-          <div class="flow">
-            <p>
-              You don't have to have technical skills to contribute. All
-              translations will be done by us and the community so feel free to
-              contribute using your language knowledge.
-            </p>
+          <TheGetInvolvedColumn
+            link="https://github.com/edburtnieks/auszra/issues?q=is%3Aopen+is%3Aissue+project%3Aedburtnieks%2Fauszra%2F4"
+          >
+            You don't have to have technical skills to contribute. All
+            translations will be done by us and the community so feel free to
+            contribute using your language knowledge.
 
-            <a
-              href="https://github.com/edburtnieks/auszra/issues?q=is%3Aopen+is%3Aissue+project%3Aedburtnieks%2Fauszra%2F4"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
+            <template v-slot:link>
               See translation issues on GitHub
-            </a>
-          </div>
+            </template>
+          </TheGetInvolvedColumn>
         </div>
       </section>
 

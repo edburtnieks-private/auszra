@@ -5,10 +5,10 @@
       quickly as possible.
     </h1>
 
-    <p>
-      We strongly believe and agree that language learning should be a fun,
-      mind-expanding, and enriching experience, accessible completely free to
-      everyone.
+    <p class="max-w-content-medium">
+      Completely free and open-source online language learning platform created
+      to make the biggest impact possible while being smart with your time and
+      energy
     </p>
   </div>
 </template>
