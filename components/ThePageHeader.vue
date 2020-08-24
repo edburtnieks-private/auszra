@@ -1,6 +1,6 @@
 <template>
   <header class="[ wrapper ] [ mb-64 ]">
     <TheMainNavigation />
-    <TheHero />
+    <slot></slot>
   </header>
 </template>

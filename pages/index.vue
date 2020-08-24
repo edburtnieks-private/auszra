@@ -1,6 +1,8 @@
 <template>
   <fragment>
-    <TheHeader />
+    <ThePageHeader>
+      <TheHero />
+    </ThePageHeader>
 
     <main class="flow wrapper">
       <section class="flow">
