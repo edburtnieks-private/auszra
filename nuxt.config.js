@@ -1,3 +1,5 @@
+import i18n from './config/i18n'
+
 export default {
   /*
    ** Nuxt target
@@ -85,12 +87,19 @@ export default {
   modules: [
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
+    // Doc: https://i18n.nuxtjs.org/
+    'nuxt-i18n',
   ],
   /*
    ** Content module configuration
    ** See https://content.nuxtjs.org/configuration
    */
   content: {},
+  /*
+   ** i18n module configuration
+   ** See https://i18n.nuxtjs.org/options-reference.html
+   */
+  i18n,
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/

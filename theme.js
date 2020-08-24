@@ -31,6 +31,7 @@ module.exports = {
   },
   spacing: {
     '0': '0',
+    '3': '0.75rem', // 12px
     '4': '1rem', // 16px
     '6': '1.5rem', // 24px
     '8': '2rem', // 32px
@@ -42,5 +43,8 @@ module.exports = {
   maxWidth: {
     'content-medium': '50ch',
     'content-large': '65ch',
+  },
+  borderRadius: {
+    lg: '0.5rem', // 8px
   },
 }

@@ -31,12 +31,13 @@ ol {
   @extend .flow;
 
   > li {
-    --flow-space: 1em;
+    --flow-space: 0.5em;
   }
 }
 
 button {
   cursor: pointer;
+  color: inherit;
 }
 
 main > * {
