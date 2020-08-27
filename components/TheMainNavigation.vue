@@ -32,8 +32,6 @@
   a {
     @apply text-dark font-normal;
 
-    text-decoration: none;
-
     &.nuxt-link-exact-active {
       @apply font-bold;
     }
