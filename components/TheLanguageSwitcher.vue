@@ -5,7 +5,7 @@
       aria-controls="language-list"
       @click="toggleLanguageList"
     >
-      <span>Site language: </span>
+      <span>{{ $t('siteLanguage') }}: </span>
       <span class="font-bold">
         {{ $i18n.locales.find((locale) => locale.code === $i18n.locale).name }}
       </span>

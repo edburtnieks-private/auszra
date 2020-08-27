@@ -36,5 +36,6 @@ export default Vue.extend({
 
   list-style: none;
   position: absolute;
+  z-index: 1;
 }
 </style>
