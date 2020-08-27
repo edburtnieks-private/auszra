@@ -1,7 +1,9 @@
 <template>
   <fragment>
+    <PaperShape />
+
     <ThePageHeader>
-      <TheHero />
+      <HomeHero />
     </ThePageHeader>
 
     <main class="flow wrapper">
@@ -31,14 +33,14 @@
       <section class="flow">
         <h2>Process overview</h2>
 
-        <TheProcess />
+        <HomeProcess />
       </section>
 
       <section class="flow">
         <h2>Get involved</h2>
 
         <div class="columns">
-          <TheGetInvolvedColumn
+          <HomeGetInvolvedColumn
             link="https://github.com/edburtnieks/auszra/issues"
           >
             This is a completely free and open-source project. Full source code
@@ -48,9 +50,9 @@
             <template v-slot:link>
               See all issues on GitHub
             </template>
-          </TheGetInvolvedColumn>
+          </HomeGetInvolvedColumn>
 
-          <TheGetInvolvedColumn
+          <HomeGetInvolvedColumn
             link="https://github.com/edburtnieks/auszra/issues?q=is%3Aopen+is%3Aissue+project%3Aedburtnieks%2Fauszra%2F4"
           >
             You don't have to have technical skills to contribute. All
@@ -60,7 +62,7 @@
             <template v-slot:link>
               See translation issues on GitHub
             </template>
-          </TheGetInvolvedColumn>
+          </HomeGetInvolvedColumn>
         </div>
       </section>
 
@@ -99,7 +101,12 @@
 <script lang="ts">
 import Vue from 'vue'
 
+import PaperShape from '~/assets/images/paper-shape.svg?inline'
+
 export default Vue.extend({
+  components: {
+    PaperShape,
+  },
   head() {
     return {
       title: 'Free and open-source online language learning platform',
@@ -107,3 +114,11 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style lang="scss" scoped>
+svg {
+  height: 0;
+  position: absolute;
+  width: 0;
+}
+</style>

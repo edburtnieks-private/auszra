@@ -39,6 +39,7 @@
     "@nuxtjs/eslint-config-typescript": "^2.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
     "@nuxtjs/stylelint-module": "^4.0.0",
+    "@nuxtjs/svg": "^0.1.11",
     "@nuxtjs/tailwindcss": "^2.1.1",
     "@vue/test-utils": "^1.0.3",
     "ava": "^3.9.0",

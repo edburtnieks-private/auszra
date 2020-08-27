@@ -89,6 +89,8 @@ export default {
     '@nuxt/content',
     // Doc: https://i18n.nuxtjs.org/
     'nuxt-i18n',
+    // Doc: https://github.com/nuxt-community/svg-module
+    '@nuxtjs/svg',
   ],
   /*
    ** Content module configuration
