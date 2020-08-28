@@ -1,11 +1,12 @@
 <template>
-  <div class="language-switcher">
+  <div class="[ language-switcher ] [ p-0 ]">
     <button
       :aria-expanded="open.toString()"
       aria-controls="language-list"
       @click="toggleLanguageList"
     >
-      <span>{{ $t('siteLanguage') }}: </span>
+      <Globe />
+      <span class="mx-3">{{ $t('siteLanguage') }}:</span>
       <span class="font-bold">
         {{ $i18n.locales.find((locale) => locale.code === $i18n.locale).name }}
       </span>
@@ -18,7 +19,12 @@
 <script lang="ts">
 import Vue from 'vue'
 
+import Globe from '~/assets/images/icons/globe.svg?inline'
+
 export default Vue.extend({
+  components: {
+    Globe,
+  },
   data() {
     return {
       open: false,
@@ -40,10 +46,10 @@ export default Vue.extend({
   position: relative;
 
   button {
-    @apply p-0;
-
+    align-items: center;
     background-color: transparent;
     border: 0;
+    display: flex;
   }
 }
 </style>
