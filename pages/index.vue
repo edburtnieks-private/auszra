@@ -2,8 +2,11 @@
   <fragment>
     <PaperShape />
 
-    <ThePageHeader>
-      <HomeHero />
+    <ThePageHeader
+      v-observe-visibility="{ callback: moveCTAPosition }"
+      :scrolled="scrolled"
+    >
+      <HomeHero :scrolled="scrolled" />
     </ThePageHeader>
 
     <main class="flow wrapper">
@@ -106,6 +109,18 @@ import PaperShape from '~/assets/images/paper-shape.svg?inline'
 export default Vue.extend({
   components: {
     PaperShape,
+  },
+  data: () => ({
+    scrolled: false,
+  }),
+  methods: {
+    moveCTAPosition(isVisible: boolean) {
+      if (!isVisible) {
+        this.scrolled = true
+      } else {
+        this.scrolled = false
+      }
+    },
   },
   head() {
     return {

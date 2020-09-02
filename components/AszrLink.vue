@@ -1,6 +1,6 @@
 <template>
   <fragment>
-    <a v-if="href" :href="href" class="link">
+    <a v-if="href" :href="href" class="[ link ] [ text-dark font-normal ]">
       <span v-if="$slots.start" class="[ link-start ] [ mr-3 ]">
         <slot name="start" />
       </span>
@@ -13,7 +13,12 @@
       </span>
     </a>
 
-    <n-link v-else :to="localePath({ name: to })" class="link" exact>
+    <n-link
+      v-else
+      :to="localePath({ name: to })"
+      class="[ link ] [ text-dark font-normal ]"
+      exact
+    >
       <span v-if="$slots.start" class="[ link-start ] [ mr-3 ]">
         <slot name="start" />
       </span>

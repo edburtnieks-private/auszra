@@ -19,21 +19,48 @@
         <ExternalLink />
       </template>
     </AszrLink>
+
+    <div class="[ cta-container ] [ flow--horizontal ]">
+      <Flipped v-if="scrolled" flip-id="primary-cta">
+        <div class="primary-cta-container">
+          <HomePrimaryCTA />
+        </div>
+      </Flipped>
+
+      <Flipped v-if="scrolled" flip-id="secondary-cta">
+        <div class="secondary-cta-container">
+          <HomeSecondaryCTA />
+        </div>
+      </Flipped>
+    </div>
   </nav>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { Flipped } from 'vue-flip-toolkit'
 
 import Logo from '~/assets/images/logo.svg?inline'
 import BookOpen from '~/assets/images/icons/book-open.svg?inline'
 import ExternalLink from '~/assets/images/icons/external-link.svg?inline'
 
+import HomePrimaryCTA from '~/components/page/home/HomePrimaryCTA.vue'
+import HomeSecondaryCTA from '~/components/page/home/HomeSecondaryCTA.vue'
+
 export default Vue.extend({
   components: {
+    Flipped,
     Logo,
     BookOpen,
     ExternalLink,
+    HomePrimaryCTA,
+    HomeSecondaryCTA,
+  },
+  props: {
+    scrolled: {
+      type: Boolean,
+      required: true,
+    },
   },
 })
 </script>
@@ -47,12 +74,26 @@ export default Vue.extend({
   align-items: center;
   display: flex;
 
-  a {
-    @apply text-dark font-normal;
+  .nuxt-link-exact-active {
+    @apply font-bold;
+  }
 
-    &.nuxt-link-exact-active {
-      @apply font-bold;
-    }
+  .cta-container {
+    --flow-space: 1em;
+
+    align-items: center;
+    display: flex;
+    margin-left: auto;
+    position: fixed;
+    right: 2rem;
+  }
+
+  .primary-cta {
+    @apply text-xl p-3;
+  }
+
+  .primary-cta-number {
+    @apply text-4xl;
   }
 }
 </style>

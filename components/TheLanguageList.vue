@@ -7,6 +7,7 @@
   >
     <li v-for="locale in $i18n.locales" :key="locale.code">
       <n-link
+        class="text-dark font-normal"
         exact
         :to="switchLocalePath(locale.code)"
         @click.native="$emit('close')"

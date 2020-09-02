@@ -11,28 +11,40 @@
       energy
     </p>
 
-    <div class="cta-container">
-      <div class="primary-cta-container">
-        <HomePrimaryCTA />
-      </div>
+    <div class="[ cta-container ] [ flow ]">
+      <Flipped v-if="!scrolled" flip-id="primary-cta">
+        <div class="primary-cta-container">
+          <HomePrimaryCTA />
+        </div>
+      </Flipped>
 
-      <div class="secondary-cta-container">
-        <HomeSecondaryCTA />
-      </div>
+      <Flipped v-if="!scrolled" flip-id="secondary-cta">
+        <div class="secondary-cta-container">
+          <HomeSecondaryCTA />
+        </div>
+      </Flipped>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { Flipped } from 'vue-flip-toolkit'
 
 import HomePrimaryCTA from '~/components/page/home/HomePrimaryCTA.vue'
 import HomeSecondaryCTA from '~/components/page/home/HomeSecondaryCTA.vue'
 
 export default Vue.extend({
   components: {
+    Flipped,
     HomePrimaryCTA,
     HomeSecondaryCTA,
+  },
+  props: {
+    scrolled: {
+      type: Boolean,
+      required: true,
+    },
   },
 })
 </script>
@@ -40,22 +52,21 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .hero {
   --flow-space: 2.5rem;
-
-  position: relative;
 }
 
 .cta-container {
+  --flow-space: 1.5em;
+
+  align-items: flex-end;
   bottom: 0;
+  display: flex;
+  flex-direction: column;
   position: absolute;
   right: 0;
   transform: translateY(100%);
 }
 
-.primary-cta-container {
-  transform: translateX(-5%);
-}
-
 .secondary-cta-container {
-  transform: translate(50%, 2rem);
+  transform: translateX(35%);
 }
 </style>
