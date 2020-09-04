@@ -52,6 +52,8 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .hero {
   --flow-space: 2.5rem;
+
+  margin-top: calc(104px + 2rem);
 }
 
 .cta-container {

@@ -1,5 +1,7 @@
 <template>
-  <nav class="[ main-navigation ] [ flow--horizontal ]">
+  <nav
+    class="[ main-navigation ] [ flow--horizontal ] [ bg-primary-light text-base py-10 px-12 ]"
+  >
     <AszrLink to="index" text="Auszra">
       <template v-slot:start>
         <Logo />
@@ -67,19 +69,21 @@ export default Vue.extend({
 
 <style lang="scss">
 .main-navigation {
-  @apply text-base py-10 mb-8;
-
   --flow-space: 3rem;
 
   align-items: center;
   display: flex;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
 
   .nuxt-link-exact-active {
     @apply font-bold;
   }
 
   .cta-container {
-    --flow-space: 1em;
+    --flow-space: 2em;
 
     align-items: center;
     display: flex;
