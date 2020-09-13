@@ -1,3 +1,5 @@
+import i18n from './config/i18n'
+
 export default {
   /*
    ** Nuxt target
@@ -63,7 +65,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: ['@/plugins/vue-fragment.js', '@/plugins/vue-observe-visibility.js'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -85,6 +87,10 @@ export default {
   modules: [
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
+    // Doc: https://i18n.nuxtjs.org/
+    'nuxt-i18n',
+    // Doc: https://github.com/nuxt-community/svg-module
+    '@nuxtjs/svg',
   ],
   /*
    ** Content module configuration
@@ -92,8 +98,16 @@ export default {
    */
   content: {},
   /*
+   ** i18n module configuration
+   ** See https://i18n.nuxtjs.org/options-reference.html
+   */
+  i18n,
+  /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+  env: {
+    BUTTONDOWN_API_KEY: process.env.BUTTONDOWN_API_KEY,
+  },
 }

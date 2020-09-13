@@ -1,0 +1,51 @@
+body {
+  @apply bg-primary-light text-dark font-body text-2xl tracking-wide;
+
+  overflow-x: hidden;
+}
+
+h1,
+h2 {
+  @apply leading-tight tracking-wide;
+}
+
+h1 {
+  @apply text-5xl;
+}
+
+h2 {
+  @apply text-4xl;
+}
+
+a {
+  @apply text-secondary font-bold tracking-wider;
+
+  text-decoration: none;
+}
+
+p,
+li {
+  @apply max-w-content-large;
+}
+
+ul,
+ol {
+  @extend .flow;
+
+  > li {
+    --flow-space: 0.5em;
+  }
+}
+
+button {
+  cursor: pointer;
+  color: inherit;
+}
+
+main > * {
+  --flow-space: 8rem;
+}
+
+section > * {
+  --flow-space: 2rem;
+}
