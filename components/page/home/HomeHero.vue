@@ -2,7 +2,7 @@
   <div class="[ hero ] [ flow ]">
     <h1>
       Start communicating and putting thoughts together in a new language as
-      quickly as possible.
+      quickly as possible
     </h1>
 
     <p class="max-w-content-medium">

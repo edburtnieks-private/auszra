@@ -48,10 +48,10 @@
           >
             This is a completely free and open-source project. Full source code
             is publicly available. If you have the design or technical
-            knowledge, you can help shape our website and application.
+            knowledge, you can help shape our website and application
 
             <template v-slot:link>
-              See all issues on GitHub
+              See on GitHub
             </template>
           </HomeGetInvolvedColumn>
 
@@ -59,11 +59,11 @@
             link="https://github.com/edburtnieks/auszra/issues?q=is%3Aopen+is%3Aissue+project%3Aedburtnieks%2Fauszra%2F4"
           >
             You don't have to have technical skills to contribute. All
-            translations will be done by us and the community so feel free to
-            contribute using your language knowledge.
+            translations are done by us and the community so feel free to
+            contribute using your language knowledge
 
             <template v-slot:link>
-              See translation issues on GitHub
+              Help with translations
             </template>
           </HomeGetInvolvedColumn>
         </div>
@@ -72,7 +72,7 @@
       <section class="flow">
         <h2>Inspiration</h2>
 
-        <div>
+        <div class="[ inspiration ] [ flow ]">
           <p>
             This project was inspired by
             <a
@@ -88,7 +88,7 @@
               rel="noreferrer noopener"
               href="https://www.youtube.com/watch?v=lhcvejeAB0E"
             >
-              I Learned Portuguese in 7 Days – Part 1 (My Method).
+              I Learned Portuguese in 7 Days
             </a>
           </p>
 
@@ -135,5 +135,9 @@ svg {
   height: 0;
   position: absolute;
   width: 0;
+}
+
+.inspiration > * {
+  --flow-space: 1em;
 }
 </style>

@@ -26,5 +26,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .get-involved-column > * {
   --flow-space: 1rem;
+
+  align-self: flex-start;
 }
 </style>
