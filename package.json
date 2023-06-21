@@ -28,7 +28,7 @@
   "dependencies": {
     "@nuxt/content": "^1.3.2",
     "@nuxt/typescript-runtime": "^0.4.10",
-    "nuxt": "^2.14.0"
+    "nuxt": "^3.4.3"
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
